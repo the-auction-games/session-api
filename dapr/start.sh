@@ -1,3 +1,3 @@
-dapr run --app-id session-api --app-port 4200 --dapr-http-port 3503 --components-path ./components -- npm run dev
+dapr run --app-id sessionapi --app-port 3000 --dapr-http-port 3503 --components-path ./components -- npm run dev
 echo ""
 echo "** PROGRAM CLOSED **"
