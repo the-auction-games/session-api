@@ -7,7 +7,7 @@ import axios from 'axios';
 const port = 3000;
 
 // Base url of session microservice
-const baseEndpointUrl = '/api/v1/session';
+const baseEndpointUrl = '/api/v1/sessions';
 
 // Base url of sidecar
 const baseSidecarUrl = 'http://localhost:3503/v1.0/state/cache';
