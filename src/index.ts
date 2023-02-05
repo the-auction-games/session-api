@@ -65,7 +65,7 @@ app.post(`${baseEndpointUrl}`, (req: Request, res: Response) => {
   axios.post(baseSidecarUrl, payload)
     .then((response) => {
       // Return response code, either 200 for ok, 500 for server error
-      res.status(response.status == 204 ? 200 : 500).send();
+      res.status(response.status == 204 ? 201 : 500).send();
     });
 });
 
