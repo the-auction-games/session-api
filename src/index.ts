@@ -69,6 +69,19 @@ app.post(`${baseEndpointUrl}`, (req: Request, res: Response) => {
     });
 });
 
+// Endpoint for deleting a session
+app.delete(`${baseEndpointUrl}/:id`, (req: Request, res: Response) => {
+  // Log the session id
+  console.log('Deleting session with id: ' + req.params.id);
+
+  // Delete the session from the cache
+  axios.delete(baseSidecarUrl + '/' + req.params.id)
+    .then((response) => {
+      // Return response code, either 200 for ok, 500 for server error
+      res.status(response.status == 204 ? 200 : 500).send();
+    });
+});
+
 // Start the app
 app.listen(port, () => {
   console.log(`Session Microservice up and running @ http://localhost:${port}`);
