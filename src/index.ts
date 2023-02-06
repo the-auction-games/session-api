@@ -31,8 +31,17 @@ app.get(`${baseEndpointUrl}/:id`, (req: Request, res: Response) => {
   // Get the session from the cache
   axios.get(baseSidecarUrl + '/' + req.params.id)
     .then((response) => {
-      // Return response
-      res.send(response.data);
+      // Check if the session exists
+      if (response.data.length == 0) {
+        // Log not found
+        console.log('Session with id: ' + req.params.id + ' not found!');
+
+        // Return not found
+        res.status(404).send();
+      } else {
+        // Return valid response
+        res.status(200).send(response.data);
+      }
     });
 });
 
@@ -78,7 +87,7 @@ app.delete(`${baseEndpointUrl}/:id`, (req: Request, res: Response) => {
   axios.delete(baseSidecarUrl + '/' + req.params.id)
     .then((response) => {
       // Return response code, either 200 for ok, 500 for server error
-      res.status(response.status == 204 ? 200 : 500).send();
+      res.status(response.status == 204 ? 204 : 500).send();
     });
 });
 
