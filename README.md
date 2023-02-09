@@ -1,5 +1,8 @@
 # session-api
 The API for tracking active user sessions.
 
+## API Documenation
+https://app.swaggerhub.com/apis/JOELSMITH19/session-api/1.0.0
+
 # Please Note
 This API is not secure in the sense that anyone can trick the API into thinking they are logged in as a specific user. This will be fixed in the next itteration and this version is specifically used only as a proof-of-concept microservice.
