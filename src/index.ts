@@ -91,7 +91,15 @@ app.delete(`${baseEndpointUrl}/:id`, (req: Request, res: Response) => {
     });
 });
 
+// Health check
+app.get('/', (req: Request, res: Response) => {
+  res.status(200).send();
+});
+
 // Start the app
 app.listen(port, () => {
   console.log(`Session Microservice up and running @ http://localhost:${port}`);
 });
+
+// Export app
+export default app;
