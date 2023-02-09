@@ -1,13 +1,28 @@
 // Imports
 import request from 'supertest';
-import app from '../src';
+import { app, server } from '../src';
 
-
+// The Mocha Test Suite for the Session API
 describe('Session API', function () {
 
   // Called once before any of the tests in this block begin.
   this.beforeAll(function (done) {
+    // Start the server
     console.log('Starting server...');
+
+    // Call done
+    done();
+  });
+
+  // Called once after all of the tests in this block complete.
+  this.afterAll(function (done) {
+    // Stop the server
+    console.log('Stopping server...');
+
+    // Close the connection
+    server.close();
+
+    // Call done
     done();
   });
 

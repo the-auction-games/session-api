@@ -97,9 +97,9 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Start the app
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`Session Microservice up and running @ http://localhost:${port}`);
 });
 
-// Export app
-export default app;
+// Export app and server
+export { app, server };

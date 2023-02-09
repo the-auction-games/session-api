@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "npx tsc && node dist/index.js",
     "dev": "npx tsc && concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
-    "test": "npx tsc && mocha dist/test/*.js --exit"
+    "test": "npx tsc && mocha dist/test/*.js"
   },
   "keywords": [],
   "author": "",
