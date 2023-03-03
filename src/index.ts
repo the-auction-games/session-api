@@ -42,6 +42,9 @@ app.get(`${baseEndpointUrl}/:id`, (req: Request, res: Response) => {
         // Return valid response
         res.status(200).send(response.data);
       }
+    }).catch((error) => {
+      // Log error
+      res.status(500).send();
     });
 });
 
@@ -75,6 +78,9 @@ app.post(`${baseEndpointUrl}`, (req: Request, res: Response) => {
     .then((response) => {
       // Return response code, either 200 for ok, 500 for server error
       res.status(response.status == 204 ? 201 : 500).send();
+    }).catch((error) => {
+      // Log error
+      res.status(500).send();
     });
 });
 
@@ -88,6 +94,9 @@ app.delete(`${baseEndpointUrl}/:id`, (req: Request, res: Response) => {
     .then((response) => {
       // Return response code, either 200 for ok, 500 for server error
       res.status(response.status == 204 ? 204 : 500).send();
+    }).catch((error) => {
+      // Log error
+      res.status(500).send();
     });
 });
 
