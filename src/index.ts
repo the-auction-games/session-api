@@ -4,13 +4,19 @@ import cors from 'cors';
 import axios from 'axios';
 
 // Express port to run on
-const port = 3000;
+const APP_PORT = process.env.APP_PORT || 3000;
+
+// Sidecar Port
+const SIDECAR_PORT = process.env.SIDECAR_PORT || 3500;
+
+// State Store Name
+const STATE_STORE_NAME = process.env.STATE_STORE_NAME || 'session-statestore';
 
 // Base url of session microservice
 const baseEndpointUrl = '/api/v1/sessions';
 
 // Base url of sidecar
-const baseSidecarUrl = 'http://localhost:3503/v1.0/state/cache';
+const baseSidecarUrl = `http://localhost:${SIDECAR_PORT}/v1.0/state/${STATE_STORE_NAME}`;
 
 // Create a new express application instance
 const app: Express = express();
@@ -106,8 +112,8 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 // Start the app
-const server = app.listen(port, () => {
-  console.log(`Session Microservice up and running @ http://localhost:${port}`);
+const server = app.listen(APP_PORT, () => {
+  console.log(`Session Microservice up and running @ http://localhost:${APP_PORT}`);
 });
 
 // Export app and server
