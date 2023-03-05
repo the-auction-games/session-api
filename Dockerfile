@@ -1,15 +1,22 @@
-# Get node image
-FROM node
-
-# Create app directory
-WORKDIR /app
-
-# Copy app source and configs
+# Build stage
+FROM node:lts AS builder
+# Set build directory
+WORKDIR /build
+# Copy application
 COPY . .
-
-# Install and build app
+# Install all dependencies
 RUN npm install
+# Build application
 RUN npm run build
+
+# Production stage
+FROM node:lts-slim
+# Set working directory
+WORKDIR /app
+# Copy application & install prod dependencies
+COPY package.json .
+RUN npm install --omit dev
+COPY --from=builder /build/dist /app
 
 # Set environment variables
 ENV APP_PORT=3000
@@ -20,4 +27,4 @@ ENV STATE_STORE_NAME="session-statestore"
 EXPOSE ${APP_PORT}
 
 # Run app
-CMD [ "node", "dist/src/index.js" ]
+CMD [ "node", "src/index.js" ]
