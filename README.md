@@ -1,5 +1,18 @@
-# session-api
-The API for tracking active user sessions.
+# Session API
+The API for tracking active user sessions. This API provides functionality for creating and validating sessions. It utilizes Dapr for service discovery and state management.
+
+## Project Structure
+The project is structured as follows:
+```
+.
+├── src/                'Source files'
+│   ├── index.ts        'Entry point'
+├── test/               'Testing directory'
+│   ├── test.ts         'Test cases'
+├── package.json        'Project manifest'
+├── tsconfig.json       'Typescript configuration'
+└── README.md           'This file'
+```
 
 ## API Documenation
 https://app.swaggerhub.com/apis/JOELSMITH19/session-api/1.0.0
